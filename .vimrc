@@ -1,64 +1,157 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+filetype plugin indent on     " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 
-set autoindent
-set encoding=utf-8
-set expandtab
+"""""""""""""""""""""""""
+" Vim-plug initialization
+"""""""""""""""""""""""""
+" Create the autocmd group used by all my autocmds (cleared when sourcing vimrc)
+augroup vimrc
+  autocmd!
+augroup END
+
+
+"""""""""""""""""""
+" auto-install Plug
+"""""""""""""""""""
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+""""""""""""""""""""""""
+" basic editor behaviour
+""""""""""""""""""""""""
+set expandtab " tabs -> spaces
+set tabstop=2
 set shiftwidth=2
-set softtabstop=4
-set tabstop=4
-set backspace=indent,eol,start
+set wrap
+set linebreak
+set formatoptions+=j
 
-call plug#begin()
 
+"""""""""
+" Plugins
+"""""""""
+call plug#begin('~/.vim/plugged')
+
+" fzf for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'wincent/command-t'
+
+" vim opens symlinks
+Plug 'moll/vim-bbye' " optional dependency
+Plug 'aymericbeaumet/vim-symlink'
+
+" show folders like ide
+Plug 'preservim/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Syntax highlighting file tree
+Plug 'Xuyuanp/nerdtree-git-plugin' " Git for NerdTree
+
+" autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" easy comments
+Plug 'scrooloose/nerdcommenter'
+
+" terraform autocomplete
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+
+" go
+Plug 'fatih/vim-go'
+
+" deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
+" use hjkl to switch between open vims in tmux
+Plug 'christoomey/vim-tmux-navigator'
+
+" make helpful bar pop up
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" colors
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-call vundle#begin()
 
-" Plugins
-Plugin 'preservim/nerdtree'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'fatih/vim-go'
-Plugin 'python-mode/python-mode'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'valloric/YouCompleteMe'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
 
-" Bundle 'christoomey/vim-tmux-navigator'
+""""""""""""""""""""""
+" auto-install plugins
+""""""""""""""""""""""
+autocmd vimrc VimEnter *
+      \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \|   PlugInstall --sync | q | runtime vimrc
+      \| endif
 
-let g:airline#extensions#default#layout = [
-    \ [ 'a', 'b', 'c' ],
-    \ [ 'x', 'z', 'error', 'warning' ]
-    \ ]
 
+""""""""""""""""""
+" Syntastic Config
+""""""""""""""""""
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-set mouse=a
-"set number
-
-"autocommands
-autocmd VimEnter * NERDTree
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+
+"""""
+" coc 
+"""""
+" Use <Tab> and <S-Tab> to navigate the completion list:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+""""""""""""""""""""""
+" Terraform Completion
+""""""""""""""""""""""
+" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
+let g:terraform_completion_keys = 1
+
+"""""""""""""""""""""""
+" deoplete for autofill
+"""""""""""""""""""""""
+" let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#omni_patterns = {}
+
+call deoplete#custom#option('omni_patterns', {
+\ 'complete_method': 'omnifunc',
+\ 'terraform': '[^ *\t"{=$]\w*',
+\})
+
+call deoplete#initialize()
+
+
+"""""""""""""""
+" nerdcommenter
+"""""""""""""""
 let g:NERDDefaultAlign = 'left'
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+
+"""""""""""
+" NERDTree
+"""""""""""
+autocmd VimEnter * NERDTree
 
 " make it look prettier on mac
 let g:NERDTreeNodeDelimiter = "\u00a0"
@@ -74,29 +167,37 @@ autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | e
 let NERDTreeShowHidden=1
 
 
-let g:pymode_options_max_line_length = 999
+"""""""""
+" airline
+"""""""""
+" let g:airline#extensions#default#layout = [
+"     \ [ 'a', 'b', 'c' ],
+"     \ [ 'x', 'z', 'error', 'warning' ]
+"     \ ]
 
-let g:go_gopls_enabled = 0
 
-cnoreabbrev <expr> t ((getcmdtype() is# ':' && getcmdline() is# 't')?('bot terminal'):('t'))
+""""""""
+" Misc
+""""""""
+" line numbers
+set number
+set relativenumber
+set cursorline
 
+" allow mouse clicks in terminal
+set mouse=a
+
+" colors
+syntax on
+colorscheme gruvbox
+
+
+"""""""""""""""""""""""
+" fix copy/paste issues
+"""""""""""""""""""""""
 " copy to buffer
 vmap <C-c> :w! ~/.vimbuffer<CR>
 nmap <C-c> :.w! ~/.vimbuffer<CR>
 " paste from buffer
 map <C-p> :r ~/.vimbuffer<CR>
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"

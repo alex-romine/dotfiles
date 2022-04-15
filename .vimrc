@@ -32,6 +32,8 @@ set wrap
 set linebreak
 set formatoptions+=j
 
+set autoread
+
 
 """""""""
 " Plugins
@@ -63,7 +65,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 
 " go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 
 " deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

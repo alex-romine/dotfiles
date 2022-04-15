@@ -124,19 +124,10 @@ let g:terraform_completion_keys = 1
 """""""""""""""""""""""
 " deoplete for autofill
 """""""""""""""""""""""
-" let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-let g:deoplete#enable_at_startup = 1
-
 let g:deoplete#omni_patterns = {}
-
-call deoplete#custom#option('omni_patterns', {
-\ 'complete_method': 'omnifunc',
-\ 'terraform': '[^ *\t"{=$]\w*',
-\})
-
+let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
+let g:deoplete#enable_at_startup = 1
 call deoplete#initialize()
-
 
 """""""""""""""
 " nerdcommenter

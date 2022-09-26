@@ -66,6 +66,7 @@ Plug 'aymericbeaumet/vim-symlink'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Syntax highlighting file tree
 Plug 'Xuyuanp/nerdtree-git-plugin' " Git for NerdTree
+Plug 'jistr/vim-nerdtree-tabs' " NerdTree independent of tabs
 
 " easy comments
 Plug 'scrooloose/nerdcommenter'
@@ -92,34 +93,9 @@ autocmd vimrc VimEnter *
       \| endif
 
 
-""""""""""""""""""
-" Syntastic Config
-""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" terraform completion
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" let g:deoplete#omni_patterns = {}
-" let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-" let g:deoplete#enable_at_startup = 1
-" call deoplete#initialize()
-
-
-"""""""""""""""""
-" you complete me 
-"""""""""""""""""
-
 """""""""""""""
 " nerdcommenter
 """""""""""""""
-let g:NERDDefaultAlign = 'left'
-
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -130,34 +106,35 @@ let g:NERDTrimTrailingWhitespace = 1
 """""""""""
 " NERDTree
 """""""""""
-autocmd VimEnter * NERDTree
-
 " make it look prettier on mac
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" Start NERDTree. If a file is specified, move the cursor to its window.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-
 " Show hidden dirs
 let NERDTreeShowHidden=1
 
-
-"""""""""
-" airline
-"""""""""
-" let g:airline#extensions#default#layout = [
-"     \ [ 'a', 'b', 'c' ],
-"     \ [ 'x', 'z', 'error', 'warning' ]
-"     \ ]
+" Only open tree when opening directories
+let g:nerdtree_tabs_open_on_console_startup = 2
 
 
 """"""""
 " Misc
 """"""""
+" put cursor back where it was last time when re-opening a file
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Undo
+" permanent undo history of files
+set undodir=$HOME/.vim/undo
+set undofile
+
+" Automatically create directory for undo if it does not exist
+if !isdirectory(expand('~').'/.vim/undo')
+  !mkdir -p $HOME/.vim/undo
+endif
+
 " line numbers
 set number
 set relativenumber
@@ -175,10 +152,11 @@ colorscheme gruvbox
 " fix copy/paste issues
 """""""""""""""""""""""
 " copy to buffer
-vmap <C-c> :w! ~/.vimbuffer<CR>
-nmap <C-c> :.w! ~/.vimbuffer<CR>
-" paste from buffer
-map <C-p> :r ~/.vimbuffer<CR>
+" vmap <C-c> :w! ~/.vimbuffer<CR>
+" nmap <C-c> :.w! ~/.vimbuffer<CR>
+" " paste from buffer
+" map <C-p> :r ~/.vimbuffer<CR>
+
 
 """"""""""""
 " coc config
@@ -282,9 +260,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
-" Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -341,3 +316,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+

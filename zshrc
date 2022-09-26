@@ -125,5 +125,10 @@ fi
 
 source /usr/local/opt/asdf/asdf.sh
 
-export PATH="/usr/local/anaconda3/bin:$PATH"
+# export PATH="/usr/local/anaconda3/bin:$PATH"  # commented out by conda initialize
 
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=False
+
+# Change fzf completion from **
+export FZF_COMPLETION_TRIGGER=',,'

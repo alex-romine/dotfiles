@@ -32,7 +32,7 @@ set shiftwidth=2
 set wrap
 set linebreak
 set formatoptions+=j
-
+set autoindent
 set autoread
 
 
@@ -118,6 +118,22 @@ let NERDTreeShowHidden=1
 " Only open tree when opening directories
 let g:nerdtree_tabs_open_on_console_startup = 2
 
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind if NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufRead * call SyncTree()
 
 """"""""
 " Misc
@@ -147,16 +163,13 @@ set mouse=a
 syntax on
 colorscheme gruvbox
 
+" fzf uses double-space to start
+let mapleader = "\<Space>"
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 
-"""""""""""""""""""""""
-" fix copy/paste issues
-"""""""""""""""""""""""
-" copy to buffer
-" vmap <C-c> :w! ~/.vimbuffer<CR>
-" nmap <C-c> :.w! ~/.vimbuffer<CR>
-" " paste from buffer
-" map <C-p> :r ~/.vimbuffer<CR>
-
+" use system clipboard
+set clipboard=unnamed
+set clipboard+=unnamedplus
 
 """"""""""""
 " coc config

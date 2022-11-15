@@ -3,6 +3,7 @@ filetype off                  " required
 filetype plugin indent on     " required
 syntax on
 
+set noswapfile
 
 """""""""""""""""""""""""
 " Vim-plug initialization

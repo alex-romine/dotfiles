@@ -102,12 +102,16 @@ source $ZSH/oh-my-zsh.sh
 #
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! 
 
+gdate +%s.%N
+echo 'gcloud'
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-export USE_GKE_GCLOUD_AUTH_PLUGIN=False
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 source ~/.zsh_aliases
 
+gdate +%s.%N
+echo 'fzf'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:/Users/Alex.Romine/.gem/ruby/3.1.0/bin:$PATH"
@@ -115,37 +119,47 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:/Users/A
 # Change fzf completion from **
 export FZF_COMPLETION_TRIGGER=',,'
 
+gdate +%s.%N
+echo 'nvim'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+gdate +%s.%N
+echo 'rd'
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/Alex.Romine/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)if command -v pyenv 1>/dev/null 2>&1; then
 
+gdate +%s.%N
+echo 'pyenv'
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
 PROMPT_EOL_MARK=''
 
+gdate +%s.%N
+echo 'asdf'
 source /usr/local/opt/asdf/asdf.sh
 
 # export PATH="/usr/local/anaconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+gdate +%s.%N
+# echo 'conda stuff'
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+    # eval "$__conda_setup"
+# else
+    # if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        # . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    # else
+        # export PATH="/usr/local/anaconda3/bin:$PATH"
+    # fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
 
-conda deactivate
+# conda deactivate

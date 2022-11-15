@@ -172,6 +172,32 @@ set clipboard=unnamed
 set clipboard+=unnamedplus
 
 """"""""""""
+" Ale Config
+""""""""""""
+" let g:ale_disable_lsp = 1
+" let g:ale_open_list = 1
+" let g:airline#extensions#ale#enabled = 1
+
+" let g:ale_fixers = {
+      " \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      " \   'bash': ['shfmt'],
+      " \   'css': ['prettier'],
+      " \   'elixir': ['mix_format'],
+      " \   'haml': ['haml-lint'],
+      " \   'html': ['prettier'],
+      " \   'javascript': ['eslint'],
+      " \   'json': ['prettier'],
+      " \   'lua': ['luafmt'],
+      " \   'markdown': ['prettier'],
+      " \   'ruby': ['rubocop'],
+      " \   'scss': ['prettier'],
+      " \   'sh': ['shfmt'],
+      " \   'sql': ['pgformatter'],
+      " \   'terraform': ['terraform'],
+      " \   'yaml': ['prettier']
+      " \}
+
+""""""""""""
 " coc config
 """"""""""""
 let g:coc_global_extensions = [

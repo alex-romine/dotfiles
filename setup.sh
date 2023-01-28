@@ -28,4 +28,8 @@ echo 'completed symlinks'
 
 echo 'end steps'
 tmux source-file ~/.tmux.conf
+
+echo 'import gruvbox for iterm from Downloads'
+curl  -o ~/Downloads/gruvbox.itermcolors https://raw.githubusercontent.com/herrbischoff/iterm2-gruvbox/master/gruvbox.itermcolors
+
 echo 'file completed'

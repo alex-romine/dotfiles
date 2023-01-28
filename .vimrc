@@ -42,6 +42,9 @@ set autoread
 """""""""
 call plug#begin('~/.vim/plugged')
 
+" Vim HardTime
+Plug 'takac/vim-hardtime'
+
 " autocompletion
 " Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -139,6 +142,9 @@ autocmd BufRead * call SyncTree()
 """"""""
 " Misc
 """"""""
+" hardtime always on
+" let g:hardtime_default_on = 1
+
 " put cursor back where it was last time when re-opening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -161,7 +167,6 @@ set cursorline
 set mouse=a
 
 " colors
-syntax on
 colorscheme gruvbox
 
 " fzf uses double-space to start
@@ -207,6 +212,8 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-sh',
       \ 'coc-yaml',
+      \ 'coc-pyright',
+      \ 'coc-yank',
       \ ]
 
 " Some servers have issues with backup files, see #649.

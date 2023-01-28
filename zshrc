@@ -131,6 +131,9 @@ echo 'rd'
 export PATH="/Users/Alex.Romine/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)if command -v pyenv 1>/dev/null 2>&1; then
 
+# set kubectl to local one
+ln -sf /usr/local/bin/kubectl ~/.rd/bin/kubectl
+
 gdate +%s.%N
 echo 'pyenv'
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -141,7 +144,7 @@ PROMPT_EOL_MARK=''
 
 gdate +%s.%N
 echo 'asdf'
-source /usr/local/opt/asdf/asdf.sh
+source "$(brew --prefix asdf)/libexec/asdf.sh"
 
 # export PATH="/usr/local/anaconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
 

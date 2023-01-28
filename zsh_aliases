@@ -1,0 +1,37 @@
+alias aliases='vi ~/.zsh_aliases'
+alias ap='ansible-playbook'
+alias checksts='aws sts get-caller-identity'
+alias faf='fzf'
+alias k='kubectl'
+alias mk='microk8s.kubectl'
+alias pc='charm . > /dev/null 2>&1 &'
+alias powershell='pwsh'
+alias tf='terraform'
+alias tfapply='terraform apply tfplan'
+alias tfplan='terraform plan -out tfplan'
+alias tg='terragrunt'
+alias tgapply='terragrunt apply tfplan'
+alias tgapplyall='terragrunt run-all apply --terragrunt-non-interactive'
+alias tgplan='terragrunt plan -out tfplan'
+alias unsetaws='unset AWS_DEFAULT_REGION AWS_SECRET_ACCESS_KEY  AWS_ACCESS_KEY_ID AWS_SECURITY_TOKEN'
+alias zsh.='source ~/.zshrc'
+alias vi="nvim"
+
+alias setproxy='ssh -i ~/.ssh/aws-devops-ec2 -D 8888 -N -f ubuntu@bastion.evoworx.org'
+
+gitci () {
+  message="$@"
+  git add -A
+  git commit -m "$message"
+}
+
+gitpush () {
+  gitci "$@"
+  git push
+}
+
+startpodman () {
+  # init if needed with 
+  # podman machine init --cpus 1 --disk-size 50 -m 4096
+  podman machine start
+}

@@ -1,11 +1,31 @@
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+if ! which brew; then
+  echo 'installing homebrew'
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
-brew install zsh
+brew install \
+  zsh \
+  nvim \
+  tmux \
+  node
 
-CURRENT_DIR="$( dirname -- "${BASH_SOURCE[0]}" )"
+if ! stat ~/.gitconfig; then
+  echo 'setting up git to use gitconfig file'
+  git config --global user.name job
+fi
 
-ln -sf ${CURRENT_DIR}/zshrc ~/.zshrc
-ln -sf ${CURRENT_DIR}/vimrc ~/.vimrc
-ln -sf ${CURRENT_DIR}/tmux.conf ~/.tmux.conf
-ln -sf ${CURRENT_DIR}/vimrc ~/.vimrc
-ln -sf ${CURRENT_DIR}/gitconfig ~/.gitconfig
+echo 'setting up symlinks'
+CURRENT_DIR="$(dirname -- "${BASH_SOURCE[0]}" )"
+FULL_PATH="$(realpath ${CURRENT_DIR})"
+
+ln -sf ${FULL_PATH}/zshrc ~/.zshrc
+ln -sf ${FULL_PATH}/zsh_aliases ~/.zsh_aliases
+ln -sf ${FULL_PATH}/vimrc ~/.vimrc
+ln -sf ${FULL_PATH}/tmux.conf ~/.tmux.conf
+ln -sf ${FULL_PATH}/gitconfig ~/.gitconfig
+echo 'completed symlinks'
+
+
+echo 'end steps'
+tmux source-file ~/.tmux.conf
+echo 'file completed'

@@ -1,0 +1,54 @@
+[user]
+  name = Alex Romine
+  email = alex.romine@uplight.com
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+
+[core]
+  autocrlf = input
+  pager = delta
+
+[delta]
+  line-numbers = true
+  side-by-side = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+#  s = status
+#  a = add . -A
+#  c = commit
+#  ac = "!git add . -A && git commit"
+#  p = push
+#  fe = checkout -b 
+#  fep = push -u origin 
+#  undocommit = reset --soft HEAD~1
+#  undoadd = reset HEAD
+#  dbr = branch -D 
+#  fdr = push origin --delete 
+#  cls = clean -f
+#  sqm = "!git fetch origin master:master && git rebase -i master"
+#  cm = checkout master
+#  fmm = fetch origin master:master
+#  lga = log --graph --oneline --all --decorate
+
+# What some of the aliases from above do:
+# ac - add & commit in one step
+# fe - create a feature branch (use it like this: git fe Features/JIRA-232_description)
+# fep - push the feature branch (use it like this: git fep Features/JIRA-232_description) 
+# dbr - deletes a branch (use: git dbr Features/JIRA-232_description)
+# fdr - deletes a branch from remote (use: git fdr Features/JIRA-232_description)
+# sqm - squishes your commits and rebases with the latest from master
+# fmm - gets the latest in the master branch while you’re still in your feature branch
+# lga - shows the latests commits with their summaries in a graph view
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false

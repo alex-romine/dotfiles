@@ -45,6 +45,8 @@ tmux source-file ~/.tmux.conf
 rm ~/.zshrc.pre-oh-my-zsh*
 
 echo 'import gruvbox for iterm from Downloads'
-curl  -o ~/Downloads/gruvbox.itermcolors https://raw.githubusercontent.com/herrbischoff/iterm2-gruvbox/master/gruvbox.itermcolors
+if ! stat ~/Downloads/gruvbox.itermcolors >> /dev/null; then
+  curl  -o ~/Downloads/gruvbox.itermcolors https://raw.githubusercontent.com/herrbischoff/iterm2-gruvbox/master/gruvbox.itermcolors
+fi
 
 echo 'file completed'

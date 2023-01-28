@@ -6,6 +6,7 @@ fi
 if ! stat ~/.oh-my-zsh >> /dev/null; then
   echo 'installing oh-my-zsh'
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
 brew tap homebrew/cask-fonts
@@ -46,6 +47,8 @@ echo 'completed symlinks'
 echo 'end steps'
 tmux source-file ~/.tmux.conf
 rm ~/.zshrc.pre-oh-my-zsh*
+
+
 
 echo 'import gruvbox for iterm from Downloads'
 if ! stat ~/Downloads/gruvbox.itermcolors >> /dev/null; then

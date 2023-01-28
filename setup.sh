@@ -8,6 +8,8 @@ if ! stat ~/.oh-my-zsh >> /dev/null; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+brew tap homebrew/cask-fonts
+
 brew install \
   zsh \
   neovim \
@@ -19,7 +21,8 @@ brew install \
 
 brew install --cask \
   rancher \
-  google-cloud-sdk
+  google-cloud-sdk \
+  font-meslo-lg-nerd-font
 
 if ! stat ~/.gitconfig >> /dev/null; then
   echo 'setting up git to use gitconfig file'

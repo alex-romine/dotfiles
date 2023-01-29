@@ -85,6 +85,9 @@ Plug 'vim-airline/vim-airline-themes'
 " colors
 Plug 'morhetz/gruvbox'
 
+" devicons for nerdtree highlight, supposed to be last
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 
@@ -112,6 +115,11 @@ let g:NERDTrimTrailingWhitespace = 1
 """""""""""
 " make it look prettier on mac
 let g:NERDTreeNodeDelimiter = "\u00a0"
+
+" disable super annoying  highlights
+let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif

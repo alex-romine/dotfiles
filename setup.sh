@@ -48,7 +48,8 @@ echo 'end steps'
 tmux source-file ~/.tmux.conf
 rm ~/.zshrc.pre-oh-my-zsh*
 
-
+echo 'get powerlevel10k'
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 echo 'import gruvbox for iterm from Downloads'
 if ! stat ~/Downloads/gruvbox.itermcolors >> /dev/null; then

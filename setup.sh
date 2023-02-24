@@ -18,7 +18,8 @@ brew install \
   tmux \
   node \
   the_silver_searcher \
-  coreutils
+  coreutils \
+  rectangle
 
 brew install --cask \
   rancher \
@@ -40,7 +41,8 @@ ln -sf ${FULL_PATH}/vimrc ~/.nvimrc
 ln -sf ${FULL_PATH}/vimrc ~/.vimrc
 ln -sf ${FULL_PATH}/tmux.conf ~/.tmux.conf
 ln -sf ${FULL_PATH}/gitconfig ~/.gitconfig
-ln -sf ${FULL_PATH}/nvim-init.vim ~/.config/nvim/init.vi
+mkdir -p ~/.config/nvim
+ln -sf ${FULL_PATH}/nvim-init.vim ~/.config/nvim/init.vim
 echo 'completed symlinks'
 
 

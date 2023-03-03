@@ -22,7 +22,8 @@ brew install \
   rectangle \
   fzf \
   k9s \
-  kubectl
+  kubectl \
+  clippy
 
 brew install --cask \
   rancher \
@@ -60,5 +61,8 @@ echo 'import gruvbox for iterm from Downloads'
 if ! stat ~/Downloads/gruvbox.itermcolors >> /dev/null; then
   curl  -o ~/Downloads/gruvbox.itermcolors https://raw.githubusercontent.com/herrbischoff/iterm2-gruvbox/master/gruvbox.itermcolors
 fi
+
+echo 'fzf keybindings and completion'
+$(brew --prefix)/opt/fzf/install --all
 
 echo 'file completed'

@@ -19,7 +19,8 @@ brew install \
   node \
   the_silver_searcher \
   coreutils \
-  rectangle
+  rectangle \
+  fzf
 
 brew install --cask \
   rancher \

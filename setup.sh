@@ -22,20 +22,21 @@ brew install \
   rectangle \
   fzf \
   k9s \
-  kubectl \
-  clippy
+  kubectl
 
 brew install --cask \
   rancher \
   google-cloud-sdk \
-  font-meslo-lg-nerd-font
+  font-meslo-lg-nerd-font \
+  clipy
 
 if ! stat ~/.gitconfig >> /dev/null; then
   echo 'setting up git to use gitconfig file'
   git config --global user.name job
 fi
 
-echo 'setting up symlinks'
+echo
+echo '~ Setting up symlinks'
 CURRENT_DIR="$(dirname -- "${BASH_SOURCE[0]}" )"
 FULL_PATH="$(realpath ${CURRENT_DIR})"
 
@@ -47,22 +48,28 @@ ln -sf ${FULL_PATH}/tmux.conf ~/.tmux.conf
 ln -sf ${FULL_PATH}/gitconfig ~/.gitconfig
 mkdir -p ~/.config/nvim
 ln -sf ${FULL_PATH}/nvim-init.vim ~/.config/nvim/init.vim
-echo 'completed symlinks'
+echo
+echo '~ Completed symlinks'
 
 
-echo 'end steps'
+echo
+echo '~ Starting end steps'
 tmux source-file ~/.tmux.conf
 rm ~/.zshrc.pre-oh-my-zsh*
 
+echo
 echo 'get powerlevel10k'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+echo
 echo 'import gruvbox for iterm from Downloads'
 if ! stat ~/Downloads/gruvbox.itermcolors >> /dev/null; then
   curl  -o ~/Downloads/gruvbox.itermcolors https://raw.githubusercontent.com/herrbischoff/iterm2-gruvbox/master/gruvbox.itermcolors
 fi
 
+echo
 echo 'fzf keybindings and completion'
 $(brew --prefix)/opt/fzf/install --all
 
-echo 'file completed'
+echo
+echo '~ File completed'

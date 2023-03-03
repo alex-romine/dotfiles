@@ -20,7 +20,9 @@ brew install \
   the_silver_searcher \
   coreutils \
   rectangle \
-  fzf
+  fzf \
+  k9s \
+  kubectl
 
 brew install --cask \
   rancher \

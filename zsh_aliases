@@ -9,7 +9,6 @@ alias tfplan='terraform plan -out tfplan'
 alias unsetaws='unset AWS_DEFAULT_REGION AWS_SECRET_ACCESS_KEY  AWS_ACCESS_KEY_ID AWS_SECURITY_TOKEN'
 alias zsh.='source ~/.zshrc'
 alias vi="nvim"
-#alias vim="nvim"
 
 alias setproxy='ssh -i ~/.ssh/aws-devops-ec2 -D 8888 -N -f ubuntu@bastion.evoworx.org'
 
@@ -22,10 +21,4 @@ gitci () {
 gitpush () {
   gitci "$@"
   git push
-}
-
-startpodman () {
-  # init if needed with 
-  # podman machine init --cpus 1 --disk-size 50 -m 4096
-  podman machine start
 }

@@ -46,6 +46,8 @@ ln -sf ${FULL_PATH}/vimrc ~/.nvimrc
 ln -sf ${FULL_PATH}/vimrc ~/.vimrc
 ln -sf ${FULL_PATH}/tmux.conf ~/.tmux.conf
 ln -sf ${FULL_PATH}/gitconfig ~/.gitconfig
+ln -sf /usr/local/bin/python3 /usr/local/bin/python
+
 mkdir -p ~/.config/nvim
 ln -sf ${FULL_PATH}/nvim-init.vim ~/.config/nvim/init.vim
 echo

@@ -36,6 +36,7 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:$HOME/.g
 
 # Change fzf completion from **
 export FZF_COMPLETION_TRIGGER=',,'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

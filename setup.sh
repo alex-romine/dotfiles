@@ -1,4 +1,4 @@
-if ! brew >> /dev/null; then
+if ! which brew >> /dev/null; then
   echo 'installing homebrew'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi

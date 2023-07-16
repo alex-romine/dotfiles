@@ -28,10 +28,8 @@ return require('packer').startup(function(use)
     use ('mbbill/undotree')
 
     -- Show folders like IDE
-    use ('preservim/nerdtree')
-    use ('tiagofumo/vim-nerdtree-syntax-highlight') -- Syntax highlighting file tree
-    use ('Xuyuanp/nerdtree-git-plugin')             -- Git for NerdTree
-    use ('ryanoasis/vim-devicons')
+    use ('nvim-tree/nvim-tree.lua')
+    use ('nvim-tree/nvim-web-devicons')
 
     -- Use hjkl to switch between open vims in tmux
     use ('christoomey/vim-tmux-navigator')

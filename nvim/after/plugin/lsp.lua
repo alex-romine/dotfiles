@@ -1,33 +1,47 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require("lsp-zero")
 
-lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
-end)
-
-lsp.setup()
+lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'ansiblels',
-  'bashls',
-  'docker_compose_language_service',
-  'dockerls',
-  'gopls',
-  'jsonls',
-  'lua_ls',
-  'pyright',
-  'terraform_ls'
+    'ansiblels',
+    'bashls',
+    'docker_compose_language_service',
+    'dockerls',
+    -- 'gopls',
+    'jsonls',
+    'lua_ls',
+    'pyright',
+    'terraformls',
+    'tflint',
 })
 
--- You need to setup `cmp` after lsp-zero
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+-- Fix Undefined global 'vim'
+lsp.nvim_workspace()
 
-cmp.setup({
-  mapping = {
-    -- `Enter` key to confirm completion
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
 
-    -- Ctrl+Space to trigger completion menu
-    ['<C-Space>'] = cmp.mapping.complete(),
-  }
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, {})
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+end)
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+lsp.setup({capabilities = capabilities})
+
+vim.diagnostic.config({
+    virtual_text = true
 })

@@ -9,4 +9,4 @@ vim.opt.termguicolors = true
 require("nvim-tree").setup()
 
 -- Open nvim-tree
-vim.keymap.set("n", "<C-p>", [[:NvimTreeToggle]])
+vim.keymap.set("n", "<C-p>", [[:NvimTreeToggle<CR>]])

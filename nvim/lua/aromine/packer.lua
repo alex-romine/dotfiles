@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
     use ('mbbill/undotree')
 
     -- Show folders like IDE
-    use ('nvim-tree/nvim-tree.lua')
+    use ('nvim-tree/nvim-tree.lua', {run = 'NvimTreeToggle'})
     use ('nvim-tree/nvim-web-devicons')
 
     -- Use hjkl to switch between open vims in tmux
@@ -36,11 +36,12 @@ return require('packer').startup(function(use)
 
     -- Make helpful bar pop up
     use ('vim-airline/vim-airline')
-    use ('vim-airline/vim-airline-themes') 
+    use ('vim-airline/vim-airline-themes')
 
     -- Easy comments
     use ('scrooloose/nerdcommenter')
 
+    -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -52,14 +53,18 @@ return require('packer').startup(function(use)
             run = function()
                 pcall(vim.cmd, 'MasonUpdate')
             end,
-        },
-        {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            },
+            {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-        -- Autocompletion
-        {'hrsh7th/nvim-cmp'},     -- Required
-        {'hrsh7th/cmp-nvim-lsp'}, -- Required
-        {'L3MON4D3/LuaSnip'},     -- Required
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},     -- Required
+            {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            {'L3MON4D3/LuaSnip'},     -- Required
+
+            -- Snippets
+            {'saadparwaiz1/cmp_luasnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
     }
-}
 
 end)

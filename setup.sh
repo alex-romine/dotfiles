@@ -43,6 +43,7 @@ FULL_PATH="$(realpath ${CURRENT_DIR})"
 ln -sf ${FULL_PATH}/zshrc ~/.zshrc
 ln -sf ${FULL_PATH}/zsh_aliases ~/.zsh_aliases
 ln -sf ${FULL_PATH}/nvim ~/.config/
+ln -sf ${FULL_PATH}/lua-vimrc ~/.vimrc
 ln -sf ${FULL_PATH}/tmux.conf ~/.tmux.conf
 ln -sf ${FULL_PATH}/gitconfig ~/.gitconfig
 ln -sf /usr/local/bin/python3 /usr/local/bin/python

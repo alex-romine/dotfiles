@@ -1,6 +1,6 @@
 [user]
   name = Alex Romine
-  email = alexromine3@gmail.com
+  email = alex.romine@uplight.com
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/

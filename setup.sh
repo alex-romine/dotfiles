@@ -42,6 +42,7 @@ FULL_PATH="$(realpath ${CURRENT_DIR})"
 
 ln -sf ${FULL_PATH}/zshrc ~/.zshrc
 ln -sf ${FULL_PATH}/zsh_aliases ~/.zsh_aliases
+mkdir ~/.config
 ln -sf ${FULL_PATH}/nvim ~/.config/
 ln -sf ${FULL_PATH}/lua-vimrc ~/.vimrc
 ln -sf ${FULL_PATH}/tmux.conf ~/.tmux.conf

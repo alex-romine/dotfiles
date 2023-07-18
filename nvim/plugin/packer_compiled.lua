@@ -99,6 +99,16 @@ _G.packer_plugins = {
     path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
+  ["lexima.vim"] = {
+    loaded = true,
+    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/lexima.vim",
+    url = "https://github.com/cohama/lexima.vim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -184,16 +194,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
     url = "https://github.com/vim-airline/vim-airline-themes"
-  },
-  ["vim-terraform"] = {
-    loaded = true,
-    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/vim-terraform",
-    url = "https://github.com/hashivim/vim-terraform"
-  },
-  ["vim-terraform-completion"] = {
-    loaded = true,
-    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/vim-terraform-completion",
-    url = "https://github.com/juliosueiras/vim-terraform-completion"
   },
   ["vim-tmux-navigator"] = {
     loaded = true,

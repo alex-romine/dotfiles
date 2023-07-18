@@ -41,6 +41,12 @@ return require('packer').startup(function(use)
     -- Easy comments
     use ('scrooloose/nerdcommenter')
 
+    -- Close pairs
+    use ('cohama/lexima.vim')
+
+    -- File movement
+    use ('ggandor/leap.nvim')
+
     -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',

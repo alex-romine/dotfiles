@@ -101,12 +101,12 @@ _G.packer_plugins = {
   },
   ["leap.nvim"] = {
     loaded = true,
-    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
   },
   ["lexima.vim"] = {
     loaded = true,
-    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/lexima.vim",
+    path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/lexima.vim",
     url = "https://github.com/cohama/lexima.vim"
   },
   ["lsp-zero.nvim"] = {

@@ -35,6 +35,10 @@ if ! stat ~/.gitconfig >> /dev/null; then
   git config --global user.name job
 fi
 
+echo 'Install Packer'
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
 echo
 echo '~ Setting up symlinks'
 CURRENT_DIR="$(dirname -- "${BASH_SOURCE[0]}" )"

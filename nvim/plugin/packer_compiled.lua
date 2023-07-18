@@ -99,6 +99,16 @@ _G.packer_plugins = {
     path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
+  ["lexima.vim"] = {
+    loaded = true,
+    path = "/Users/alchemist/.local/share/nvim/site/pack/packer/start/lexima.vim",
+    url = "https://github.com/cohama/lexima.vim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",

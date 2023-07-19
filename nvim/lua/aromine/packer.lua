@@ -31,6 +31,9 @@ return require('packer').startup(function(use)
     use ('nvim-tree/nvim-tree.lua', {run = 'NvimTreeToggle'})
     use ('nvim-tree/nvim-web-devicons')
 
+    -- Show Git Changes
+    use ('lewis6991/gitsigns.nvim')
+
     -- Use hjkl to switch between open vims in tmux
     use ('christoomey/vim-tmux-navigator')
 

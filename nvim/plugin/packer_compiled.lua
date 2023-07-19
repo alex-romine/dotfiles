@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["flit.nvim"] = {
+    loaded = true,
+    path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/flit.nvim",
+    url = "https://github.com/ggandor/flit.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/friendly-snippets",

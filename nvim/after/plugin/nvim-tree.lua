@@ -10,3 +10,6 @@ require("nvim-tree").setup()
 
 -- Open nvim-tree
 vim.keymap.set("n", "<C-p>", [[:NvimTreeToggle<CR>]])
+
+-- Reveal current file
+vim.keymap.set("n", "<leader>tff", [[:NvimTreeFindFile<CR>]])

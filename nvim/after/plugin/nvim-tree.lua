@@ -5,11 +5,9 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- OR setup with some options
 require("nvim-tree").setup()
 
--- Open nvim-tree
-vim.keymap.set("n", "<C-p>", [[:NvimTreeToggle<CR>]])
+local api = require("nvim-tree.api")
 
--- Reveal current file
-vim.keymap.set("n", "<leader>tff", [[:NvimTreeFindFile<CR>]])
+vim.keymap.set("n", "<C-p>", [[:NvimTreeToggle<CR>]])
+vim.keymap.set("n", "<leader>sf", function() api.tree.toggle({ find_file = true, focus = false }) end)

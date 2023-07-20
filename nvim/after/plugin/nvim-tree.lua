@@ -10,4 +10,4 @@ require("nvim-tree").setup()
 local api = require("nvim-tree.api")
 
 vim.keymap.set("n", "<C-p>", [[:NvimTreeToggle<CR>]])
-vim.keymap.set("n", "<leader>sf", function() api.tree.toggle({ find_file = true, focus = false }) end)
+vim.keymap.set("n", "<leader>nf", function() api.tree.find_file({ open = true }) end)

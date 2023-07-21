@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
 
     -- File movement
     use ('ggandor/leap.nvim')
+    use ('ggandor/flit.nvim')
 
     -- LSP
     use {

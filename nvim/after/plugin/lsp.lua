@@ -10,7 +10,8 @@ lsp.ensure_installed({
     -- 'gopls',
     'jsonls',
     'lua_ls',
-    'pyright',
+    'pylsp',
+    -- 'pyright',
     'terraformls',
     'tflint',
 })

@@ -51,6 +51,9 @@ return require('packer').startup(function(use)
     use ('ggandor/leap.nvim')
     use ('ggandor/flit.nvim')
 
+    -- Troubleshooting
+    use ('folke/trouble.nvim')
+
     -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',

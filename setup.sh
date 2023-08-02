@@ -12,18 +12,19 @@ fi
 brew tap homebrew/cask-fonts
 
 brew install \
-  zsh \
-  neovim \
   asdf \
-  tmux \
-  node \
-  the_silver_searcher \
   coreutils \
-  rectangle \
   fzf \
+  git-delta \
   k9s \
-  ripgrep \
   kubectl
+  neovim \
+  node \
+  rectangle \
+  ripgrep \
+  the_silver_searcher \
+  tmux \
+  zsh \
 
 brew install --cask \
   google-cloud-sdk \

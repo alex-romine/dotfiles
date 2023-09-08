@@ -1,6 +1,4 @@
-local lsp = require("lsp-zero")
-
-lsp.preset("recommended")
+local lsp = require("lsp-zero").preset({})
 
 lsp.ensure_installed({
     'ansiblels',
@@ -18,6 +16,24 @@ lsp.ensure_installed({
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
+-- Mappings for completions
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-j>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-k>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<CR>'] = cmp.mapping.confirm({select = false}),
+  ["<C-Space>"] = cmp.mapping.complete(),
+})
+
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
+})
+
+-- lsp preferences
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
@@ -37,9 +53,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 end)
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-lsp.setup({capabilities = capabilities})
+lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true

@@ -109,11 +109,6 @@ _G.packer_plugins = {
     path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  harpoon = {
-    loaded = true,
-    path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/theprimeagen/harpoon"
-  },
   ["leap.nvim"] = {
     loaded = true,
     path = "/Users/Alex.Romine/.local/share/nvim/site/pack/packer/start/leap.nvim",

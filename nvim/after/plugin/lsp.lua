@@ -5,7 +5,7 @@ lsp.ensure_installed({
     'bashls',
     'docker_compose_language_service',
     'dockerls',
-    -- 'gopls',
+    'gopls',
     'jsonls',
     'lua_ls',
     'pyright',

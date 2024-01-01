@@ -5,11 +5,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 # Add /opt/homebrew/bin
 export PATH=/opt/homebrew/bin:/Users/alchemist/.rd/bin:/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:/Users/alchemist/.gem/ruby/3.1.0/bin:/usr/local/sbin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:/Users/alchemist/.orbstack/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/opt/fzf/bin
+
+# Brew completions got randomly lost at some point
+ln -sf "$(brew --prefix)/share/zsh-completions" /usr/local/share/zsh/site-functions/_brew 
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -60,25 +63,9 @@ PROMPT_EOL_MARK=''
 
 source "$(brew --prefix asdf)/libexec/asdf.sh"
 
-# export PATH="/usr/local/anaconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
-
-# echo 'conda stuff'
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-    # eval "$__conda_setup"
-# else
-    # if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        # . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    # else
-        # export PATH="/usr/local/anaconda3/bin:$PATH"
-    # fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<
-
-# conda deactivate
+export PATH="/opt/Homebrew/anaconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="/Users/alchemist/.cargo/bin:$PATH"
